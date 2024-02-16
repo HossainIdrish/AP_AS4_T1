@@ -19,7 +19,7 @@ require([
         container: "viewDiv",
         map: map,
         center:[-91.1, 38.6],
-        zoom: 9
+        zoom: 10
       });
 
       /*************************************************************
@@ -49,7 +49,7 @@ require([
             }
           }, {
             fieldName: "NHD_NUMTXT",
-            label: "Neighborhood Number: ",
+            label: "Number: ",
             visible: true,
             format: {
               digitSeparator: true,

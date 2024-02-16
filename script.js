@@ -40,10 +40,6 @@ require([
           // in the content, it defaults to whatever may be set within the popupTemplate.
           type: "fields",
           fieldInfos: [{
-            fieldName: "Shape__Area",
-            label: "Shape__Area: ",
-            visible: true
-          }, {
             fieldName: "FID",
             label: "FID: ",
             visible: true,
@@ -67,16 +63,7 @@ require([
               digitSeparator: true,
               places: 0
             }
-          }, {
-            fieldName: "ANGLE",
-            label: "ANGLE",
-            visible: true,
-            format: {
-              digitSeparator: true,
-              places: 0
-            }
-          }
-                      ]
+          }]
         }]
       };
 

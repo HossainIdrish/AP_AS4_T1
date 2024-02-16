@@ -18,7 +18,7 @@ require([
       var view = new MapView({
         container: "viewDiv",
         map: map,
-        center:[-91.1, 38.6],
+        center:[-90.1, 38.6],
         zoom: 9
       });
 
@@ -40,10 +40,42 @@ require([
           // in the content, it defaults to whatever may be set within the popupTemplate.
           type: "fields",
           fieldInfos: [{
-            fieldName: "NHD_NUM",
-            label: "Neighborhood Number: ",
+            fieldName: "Shape__Area",
+            label: "Shape__Area: ",
             visible: true
-          },
+          }, {
+            fieldName: "FID",
+            label: "FID: ",
+            visible: true,
+            format: {
+              digitSeparator: true,
+              places: 0
+            }
+          }, {
+            fieldName: "NHD_NUM ",
+            label: "NHD_NUM: ",
+            visible: true,
+            format: {
+              digitSeparator: true,
+              places: 0
+            }
+          }, {
+            fieldName: "NHD_NAME",
+            label: "NHD_NAME",
+            visible: true,
+            format: {
+              digitSeparator: true,
+              places: 0
+            }
+          }, {
+            fieldName: "ANGLE",
+            label: "ANGLE",
+            visible: true,
+            format: {
+              digitSeparator: true,
+              places: 0
+            }
+          }
                       ]
         }]
       };
@@ -59,6 +91,7 @@ require([
       symbol: symbol
     };
   
+  
       // Reference the popupTemplate instance in the
       // popupTemplate property of FeatureLayer
       var featureLayer = new FeatureLayer({
@@ -71,17 +104,4 @@ require([
       map.add(featureLayer);
   
 
-   /*
-      featureLayer.renderer = {
-      type: "simple",  // autocasts as new SimpleRenderer()
-      symbol: {
-        type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
-        size: 6,
-        color: "red",
-        outline: {  // autocasts as new SimpleLineSymbol()
-          width: 0.5,
-          color: "white"
-        }
-      }
-    };*/
     });

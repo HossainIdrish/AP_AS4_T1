@@ -33,7 +33,7 @@ require([
        **************************************************************/
 
       var template = { // autocasts as new PopupTemplate()
-        title: "Neighborhood Name and Number: {NHD_NUMTXT}",
+        title: "Saint Louis Neighborhood: {NHD_NAME}",
         content: [{
           // It is also possible to set the fieldInfos outside of the content
           // directly in the popupTemplate. If no fieldInfos is specifically set
@@ -48,8 +48,8 @@ require([
               places: 0
             }
           }, {
-            fieldName: "NHD_NUMTXT",
-            label: "Number: ",
+            fieldName: "NHD_NUM",
+            label: "Neighborhood Number: ",
             visible: true,
             format: {
               digitSeparator: true,
@@ -72,8 +72,8 @@ require([
       type: "simple",  // autocasts as new SimpleRenderer()
       symbol: {
         type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
-        size: 6,
-        color: "red",
+        size: 6.5,
+        color: "purple",
         outline: {  // autocasts as new SimpleLineSymbol()
           width: 0.6,
           color: "white"

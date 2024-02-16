@@ -73,9 +73,9 @@ require([
       symbol: {
         type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
         size: 6,
-        color: "red",
+        color: "purple",
         outline: {  // autocasts as new SimpleLineSymbol()
-          width: 0.5,
+          width: 0.6,
           color: "white"
         }
       }

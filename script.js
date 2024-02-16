@@ -1,83 +1,60 @@
 require([
-      "esri/Map",
-      "esri/layers/FeatureLayer",
-      "esri/views/MapView",
-      "dojo/domReady!"
-    ], function(
-      Map,
-      FeatureLayer,
-      MapView
-    ) {
+  "esri/Map",
+  "esri/layers/FeatureLayer",
+  "esri/views/MapView",
+  "dojo/domReady!"
+], function(
+  Map,
+  FeatureLayer,
+  MapView
+) {
 
-      // Create the map
-      var map = new Map({
-        basemap: "gray"
-      });
+  // Create the map
+  var map = new Map({
+    basemap: "gray"
+  });
 
-      // Create the MapView
-      var view = new MapView({
-        container: "viewDiv",
-        map: map,
-        center:[-91.1, 38.6],
-        zoom: 10
-      });
+  // Create the MapView
+  var view = new MapView({
+    container: "viewDiv",
+    map: map,
+    center: [-91.1, 38.6],
+    zoom: 10
+  });
 
-      /*************************************************************
-       * The PopupTemplate content is the text that appears inside the
-       * popup. {fieldName} can be used to reference the value of an
-       * attribute of the selected feature. HTML elements can be used
-       * to provide structure and styles within the content. The
-       * fieldInfos property is an array of objects (each object representing
-       * a field) that is use to format number fields and customize field
-       * aliases in the popup and legend.
-       **************************************************************/
+  var template = {
+    title: "Saint Louis Neighborhood: {NHD_NAME}",
+    content: [{
+      type: "fields",
+      fieldInfos: [{
+        fieldName: "NHD_NAME",
+        label: "Neighborhood Name: ",
+        visible: true
+      }, {
+        fieldName: "NHD_NUM",
+        label: "Neighborhood Number: ",
+        visible: true
+      }]
+    }]
+  };
 
-      var template = { // autocasts as new PopupTemplate()
-        title: "Saint Louis Neighborhood: {NHD_NAME}",
-        content: [{
-          // It is also possible to set the fieldInfos outside of the content
-          // directly in the popupTemplate. If no fieldInfos is specifically set
-          // in the content, it defaults to whatever may be set within the popupTemplate.
-          type: "fields",
-          fieldInfos: [{
-            fieldName: "NHD_NAME",
-            label: "Neighborhood Name: ",
-            visible: true,
-            format: {
-              digitSeparator: true,
-              places: 0
-            }
-          }, {
-            fieldName: "NHD_NUM",
-            label: "Neighborhood Number: ",
-            visible: true,
-            format: {
-              digitSeparator: true,
-              places: 0
-            }
-          }]
-        }]
-      };
-
-      // Reference the popupTemplate instance in the
-      // popupTemplate property of FeatureLayer
-      var featureLayer = new FeatureLayer({
-        url: "https://services2.arcgis.com/bB9Y1bGKerz1PTl5/ArcGIS/rest/services/STL_Neighborhood/FeatureServer/0",
-        outFields: ["*"],
-        popupTemplate: template
-      });
-      map.add(featureLayer);
-      
-      /*featureLayer.renderer = {
+  var featureLayer = new FeatureLayer({
+    url: "https://services2.arcgis.com/bB9Y1bGKerz1PTl5/ArcGIS/rest/services/STL_Neighborhood/FeatureServer/0",
+    outFields: ["*"],
+    popupTemplate: template,
+    renderer: {  // Now uncommented and updated
       type: "simple",  // autocasts as new SimpleRenderer()
       symbol: {
         type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
         size: 6,
-        color: "red",
+        color: "purple",  // Color changed to blue
         outline: {  // autocasts as new SimpleLineSymbol()
           width: 0.6,
           color: "white"
         }
       }
-    };*/
-    });
+    }
+  });
+  
+  map.add(featureLayer);
+});
